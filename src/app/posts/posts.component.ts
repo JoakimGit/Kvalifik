@@ -16,8 +16,14 @@ export class PostsComponent implements OnInit {
   ngOnInit(): void {
     this.tempData = this.tempDataService.getPosts();
   }
+  
   editPost(id: any) {
-    this.router.navigate(['neweditpost', {myId: id}])
+    this.router.navigate(['neweditpost', {myId: id}]);
   }
+
+  deletePost(id: any) {
+    this.tempDataService.deletePost(id);
+  }
+
   
 }

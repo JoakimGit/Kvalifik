@@ -10,6 +10,7 @@ import { Post } from '../entities/Post';
 export class PostComponent implements OnInit {
  @Input() post: Post;
  @Output() postClicked: EventEmitter<any> = new EventEmitter<any>();
+ @Output() deleteClicked: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() { }
 
@@ -18,5 +19,8 @@ export class PostComponent implements OnInit {
   
   editPost(id: string): void {
     this.postClicked.emit(id);
+  }
+  deletePost(id: string): void {
+    this.deleteClicked.emit(id);
   }
 }

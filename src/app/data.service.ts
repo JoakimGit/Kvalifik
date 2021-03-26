@@ -26,5 +26,7 @@ export class DataService {
 
   public deletePost(id: any) {
     // delete a post
+    const index = this.posts.map(post => post.id).indexOf(id);
+    this.posts.splice(index, 1);
   }
 }
