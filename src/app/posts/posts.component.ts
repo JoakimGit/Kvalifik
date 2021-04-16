@@ -34,7 +34,7 @@ export class PostsComponent implements OnInit {
   }
 
   deletePost(id: any) {
-    this.tempDataService.deletePost(id);
+    this.postActions.deletePost(id);
   }
 
   

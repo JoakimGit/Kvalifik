@@ -12,6 +12,7 @@ export class PostActions {
   static SET_HAPPY: string = 'SET_HAPPY'; 
   static ADD_POST: string = 'ADD_POST'; 
   static UPDATE_POST: string = 'UPDATE_POST'; 
+  static DELETE_POST: string = 'DELETE_POST'; 
 
   setType(isHappy: boolean): void {
     
@@ -31,6 +32,13 @@ export class PostActions {
     this.ngRedux.dispatch({
         type: PostActions.UPDATE_POST,
         payload: updatedPost
+    });
+  }
+
+  deletePost(id: string) : void {
+    this.ngRedux.dispatch({
+      type: PostActions.DELETE_POST,
+      payload: id
     });
   }
 

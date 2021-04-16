@@ -2,6 +2,7 @@ import { tassign } from 'tassign';
 import { PostState } from '../Store';
 import { PostActions } from '../actions/PostActions';
 import { Post } from 'src/app/entities/Post';
+import { ɵangular_packages_platform_browser_dynamic_platform_browser_dynamic_a } from '@angular/platform-browser-dynamic';
 
 export const posts = [
     {id: '1', createdDate: new Date(2021, 0, 2), title: 'Is there life out there', text: 'Something' } as Post,
@@ -29,6 +30,11 @@ export function postsReducer(state: PostState = INITIAL_STATE, action: any) {
         // add the action.payload (post) to the array of posts, but without mutating the array.
         return tassign(state, {posts: state.posts.concat(action.payload)});
         // return tassign(state, {posts: [...state.posts, action.payload]});
+    
+    case PostActions.DELETE_POST:
+        let arrayCopy = [...state.posts];
+        arrayCopy = arrayCopy.filter(post => post.id !== action.payload);
+        return tassign(state, {posts: arrayCopy});
 
   case PostActions.SET_HAPPY:
     // action.payload = true/false
