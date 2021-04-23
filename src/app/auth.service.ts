@@ -27,7 +27,7 @@ export class AuthService {
   }
 
   signup(username: string, password: string) {
-    const apiKey = 'AIzaSyAKyWtjLqAyXzNnPnvZ_MlcEF3GSjKtHLI'; // THis is mine. Use your own please!
+    const apiKey = 'AIzaSyAW2lhQzpJDHAVwvEab_Q6CDD34dqqtLyk'; // THis is mine. Use your own please!
     const url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + apiKey;
     
     return this.http.post(url, {email: username, password, returnSecureToken: true}, 

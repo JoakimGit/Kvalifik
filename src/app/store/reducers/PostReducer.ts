@@ -28,7 +28,6 @@ export function postsReducer(state: PostState = INITIAL_STATE, action: any) {
         
     case PostActions.ADD_POST:
         // add the action.payload (post) to the array of posts, but without mutating the array.
-<<<<<<< HEAD
         return tassign(state, {posts: state.posts.concat(action.payload)});
         // return tassign(state, {posts: [...state.posts, action.payload]});
     
@@ -36,13 +35,6 @@ export function postsReducer(state: PostState = INITIAL_STATE, action: any) {
         let arrayCopy = [...state.posts];
         arrayCopy = arrayCopy.filter(post => post.id !== action.payload);
         return tassign(state, {posts: arrayCopy});
-=======
-        // state.posts.push(action.payload);
-        // return state;
-
-        // return tassign(state, {posts: state.posts.concat(action.payload)});
-        return tassign(state, {posts: [...state.posts, action.payload]});
->>>>>>> 80a5006a1c6b2280f19415677064299c5b4cfcff
 
   case PostActions.SET_HAPPY:
     // action.payload = true/false
