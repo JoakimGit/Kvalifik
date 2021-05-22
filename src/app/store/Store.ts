@@ -13,6 +13,7 @@ export class PostState {
 export class UserState {
     loggedInUser: User;
     token: string;
+    users: User[];
 }
 // export class EventState {
 //     events: Event[];

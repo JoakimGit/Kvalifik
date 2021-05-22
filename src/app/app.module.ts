@@ -27,6 +27,12 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { RegisterComponent } from './register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PostsPipe } from './posts.pipe';
+import { VolunteersComponent } from './volunteers/volunteers.component';
+import { NewVolunteerComponent } from './volunteers/new-volunteer/new-volunteer.component';
+import {MatOptionModule} from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -39,7 +45,9 @@ import { PostsPipe } from './posts.pipe';
     PostComponent,
     LoginComponent,
     RegisterComponent,
-    PostsPipe
+    PostsPipe,
+    VolunteersComponent,
+    NewVolunteerComponent
   ],
   imports: [
     BrowserModule,
@@ -49,8 +57,8 @@ import { PostsPipe } from './posts.pipe';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatButtonModule, MatToolbarModule, MatIconModule, MatListModule, AppRoutingModule,
-    MatInputModule, MatCardModule, MatGridListModule, MatListModule
+    MatButtonModule, MatToolbarModule, MatIconModule, MatListModule, AppRoutingModule, MatTableModule,
+    MatInputModule, MatCardModule, MatGridListModule, MatListModule, MatOptionModule, MatSelectModule, MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -59,11 +67,11 @@ export class AppModule {
   constructor(private ngRedux: NgRedux<AppState>,
     private devTool: DevToolsExtension,
     private ngReduxRouter: NgReduxRouter,) {
-   
+
     this.ngRedux.configureStore(rootReducer, {}, [],[ devTool.isEnabled() ? devTool.enhancer() : f => f]);
 //    this.ngRedux.configureStore(rootReducer, {});
- 
-      ngReduxRouter.initialize(/* args */);   
+
+      ngReduxRouter.initialize(/* args */);
   }
- 
+
  }

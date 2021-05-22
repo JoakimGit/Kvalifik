@@ -1,0 +1,34 @@
+<h3>{{headerTitle}}</h3><br>
+
+<form [formGroup]="volunteerForm" (ngSubmit)="onSubmitVolunteer()">
+  <mat-form-field class="example-full-width">
+    <mat-label>First name</mat-label>
+    <textarea matInput id="firstName" placeholder="First name" formControlName="firstName"></textarea>
+  </mat-form-field><br>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Last name</mat-label>
+    <textarea matInput id="lastName" placeholder="Last name" formControlName="lastName"></textarea>
+  </mat-form-field><br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Role</mat-label>
+    <mat-select [(ngModel)]="selectedRole" [ngModelOptions]="{standalone: true}" name="selRole">
+      <mat-option *ngFor="let role of roles" [value]="role">
+        {{role}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field><br>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Username</mat-label>
+    <textarea matInput id="username" placeholder="Username" formControlName="username"></textarea>
+  </mat-form-field><br>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Email</mat-label>
+    <textarea matInput id="email" placeholder="Email" formControlName="email"></textarea>
+  </mat-form-field><br>
+
+  <button id="save" mat-raised-button color="primary">Save</button>
+</form>

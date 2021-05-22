@@ -16,7 +16,7 @@ export class PostsComponent implements OnInit {
   public isHappy: boolean;
   birthday = new Date(1988, 3, 15);
   public search: string = '';
-  
+
   constructor(private router: Router, private tempDataService: DataService,
     private ngRedux: NgRedux<AppState>, private postActions: PostActions) { }
 
@@ -27,10 +27,10 @@ export class PostsComponent implements OnInit {
       this.isHappy = res.isHappy;
       this.posts = res.posts;
     });
- 
+    console.log(this.posts);
     // this.tempData = this.tempDataService.getPosts();
   }
-  setHappy(happy: boolean) : void {
+  setHappy(happy: boolean): void {
     this.postActions.setType(happy);
   }
   editPost(id: any) {
@@ -41,5 +41,5 @@ export class PostsComponent implements OnInit {
     this.postActions.deletePost(id);
   }
 
-  
+
 }

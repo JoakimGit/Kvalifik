@@ -2,30 +2,31 @@ import { NgRedux } from '@angular-redux/store';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
-import { Post } from './entities/Post';
 import { AppState } from './store/Store';
+import {User} from './entities/User';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PostsService extends ApiService {
+export class VolunteersService extends ApiService {
 
   constructor(private http: HttpClient, private ngRedux: NgRedux<AppState>) {
     super();
   }
 
-  savePost(post: Post) {
+  saveVolunteer(volunteer: User): Observable<any>{
     const token = this.ngRedux.getState().users.token;
-    const url = 'https://kvalifikdb-default-rtdb.europe-west1.firebasedatabase.app/posts.json?auth=' + token;
+    const url = 'https://kvalifikdb-default-rtdb.europe-west1.firebasedatabase.app/volunteers.json?auth=' + token;
 
-    return this.http.post(url, post, this.getHttpOptions());
+    return this.http.post(url, volunteer, this.getHttpOptions());
     // "https://<DATABASE_NAME>.firebaseio.com/users/ada/name.json?auth=<ID_TOKEN>"
   }
 
 
-  readPosts() {
+  readVolunteers(): Observable<any> {
     const token = this.ngRedux.getState().users.token;
-    const url = 'https://kvalifikdb-default-rtdb.europe-west1.firebasedatabase.app/posts.json?auth=' + token;
+    const url = 'https://kvalifikdb-default-rtdb.europe-west1.firebasedatabase.app/volunteers.json?auth=' + token;
 
     return this.http.get(url, this.getHttpOptions());
   }

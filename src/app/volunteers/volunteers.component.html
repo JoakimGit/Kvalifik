@@ -1,0 +1,124 @@
+<style>
+  table {
+    width: 100%;
+  }
+</style>
+<div class="flexHeader">
+  <h1>Volunteers</h1>
+  <button mat-raised-button color="primary" routerLink="newvolunteer" id="newPostBtn">New Volunteer</button>
+</div>
+
+<div class="flexGrid">
+  <div class="mat-elevation-z8">
+    <h3>Volunteer applications</h3>
+    <table mat-table [dataSource]="dataSource">
+
+<!--      <ng-container matColumnDef="isVolunteer">-->
+<!--        <th mat-header-cell *matHeaderCellDef>isVolunteer</th>-->
+<!--        <td mat-cell *matCellDef="let user"> {{user.isVolunteer}} </td>-->
+<!--      </ng-container>-->
+
+      <!-- First name Column -->
+      <ng-container matColumnDef="First name">
+        <th mat-header-cell *matHeaderCellDef>First name</th>
+        <td mat-cell *matCellDef="let user"> {{user.firstName}} </td>
+      </ng-container>
+
+      <!-- Last name Column -->
+      <ng-container matColumnDef="Last name">
+        <th mat-header-cell *matHeaderCellDef>Last name</th>
+        <td mat-cell *matCellDef="let user"> {{user.lastName}} </td>
+      </ng-container>
+
+      <!-- Role Column -->
+      <ng-container matColumnDef="Role">
+        <th mat-header-cell *matHeaderCellDef>Role</th>
+        <td mat-cell *matCellDef="let user"> {{user.role}} </td>
+      </ng-container>
+
+      <!-- Username Column -->
+      <ng-container matColumnDef="Username">
+        <th mat-header-cell *matHeaderCellDef>Username</th>
+        <td mat-cell *matCellDef="let user"> {{user.username}} </td>
+      </ng-container>
+
+      <!-- Email Column -->
+      <ng-container matColumnDef="Email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let user"> {{user.email}} </td>
+      </ng-container>
+
+      <!-- SignUp Column -->
+      <ng-container matColumnDef="signUp">
+        <th mat-header-cell *matHeaderCellDef>Application date</th>
+        <td mat-cell *matCellDef="let user"> {{user.signupDate}} </td>
+      </ng-container>
+
+      <!-- Accept/Decline Column -->
+      <ng-container matColumnDef="accDec">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let user">
+          <button mat-flat-button color="primary" (click)="accept(user.id)">Accept</button>
+          <button mat-flat-button color="warn" (click)="decline(user.id)">Decline</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+
+  <div class="mat-elevation-z8">
+    <h3>Volunteers</h3>
+    <table mat-table [dataSource]="dataSource2">
+
+<!--      <ng-container matColumnDef="isVolunteer">-->
+<!--        <th mat-header-cell *matHeaderCellDef>isVolunteer</th>-->
+<!--        <td mat-cell *matCellDef="let user"> {{user.isVolunteer}} </td>-->
+<!--      </ng-container>-->
+
+      <!-- First name Column -->
+      <ng-container matColumnDef="First name">
+        <th mat-header-cell *matHeaderCellDef>First name</th>
+        <td mat-cell *matCellDef="let user"> {{user.firstName}} </td>
+      </ng-container>
+
+      <!-- Last name Column -->
+      <ng-container matColumnDef="Last name">
+        <th mat-header-cell *matHeaderCellDef>Last name</th>
+        <td mat-cell *matCellDef="let user"> {{user.lastName}} </td>
+      </ng-container>
+
+      <!-- Role Column -->
+      <ng-container matColumnDef="Role">
+        <th mat-header-cell *matHeaderCellDef>Role</th>
+        <td mat-cell *matCellDef="let user"> {{user.role}} </td>
+      </ng-container>
+
+      <!-- Username Column -->
+      <ng-container matColumnDef="Username">
+        <th mat-header-cell *matHeaderCellDef>Username</th>
+        <td mat-cell *matCellDef="let user"> {{user.username}} </td>
+      </ng-container>
+
+      <!-- Email Column -->
+      <ng-container matColumnDef="Email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let user"> {{user.email}} </td>
+      </ng-container>
+
+      <!-- SignUp Column -->
+      <ng-container matColumnDef="signUp">
+        <th mat-header-cell *matHeaderCellDef>Volunteer since</th>
+        <td mat-cell *matCellDef="let user"> {{user.signupDate}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>
