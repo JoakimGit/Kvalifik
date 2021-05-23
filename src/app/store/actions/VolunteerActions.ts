@@ -1,13 +1,14 @@
 import {Injectable} from '@angular/core';
 import {NgRedux} from '@angular-redux/store';
 import {AppState} from '../Store';
-import {VolunteersService} from '../../volunteers.service';
+import {VolunteersService} from '../../services/volunteers.service';
 import {User} from '../../entities/User';
 
 @Injectable({ providedIn: 'root'})
 export class VolunteerActions {
   static ADD_VOLUNTEER = 'ADD_VOLUNTEER';
   static READ_VOLUNTEERS = 'READ_VOLUNTEERS';
+  static UPDATE_VOLUNTEER = 'UPDATE_VOLUNTEER';
   constructor(private ngRedux: NgRedux<AppState>, private volunteerService: VolunteersService)
   {}
 
@@ -39,6 +40,17 @@ export class VolunteerActions {
       volunteer.id = result.name;
       this.ngRedux.dispatch({
         type: VolunteerActions.ADD_VOLUNTEER,
+        payload: volunteer
+      });
+    });
+  }
+
+  updateVolunteer(volunteer: User): void {
+    this.volunteerService.updateVolunteer(volunteer).subscribe((result: any) => {
+      console.log('Updated ' + result);
+
+      this.ngRedux.dispatch({
+        type: VolunteerActions.UPDATE_VOLUNTEER,
         payload: volunteer
       });
     });

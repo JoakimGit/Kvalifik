@@ -1,0 +1,59 @@
+<style>
+  table {
+    width: 100%;
+  }
+</style>
+<h1>{{headerTitle}}</h1>
+
+<form [formGroup]="groupForm" (ngSubmit)="onSubmitGroup()">
+  <mat-form-field class="example-full-width">
+    <mat-label>Group name</mat-label>
+    <textarea matInput id="name" placeholder="Group name" formControlName="name"></textarea>
+  </mat-form-field><br>
+
+<div class="mat-elevation-z1">
+  <table>
+    <th align="left"><h3>Volunteers</h3></th>
+  </table>
+  <table class="tableClass" mat-table [dataSource]="dataSource">
+
+    <!-- First name Column -->
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let user"> {{user.firstName}}  {{user.lastName}}</td>
+    </ng-container>
+
+    <!-- Role Column -->
+    <ng-container matColumnDef="Role">
+      <th mat-header-cell *matHeaderCellDef>Role</th>
+      <td mat-cell *matCellDef="let user"> {{user.role}} </td>
+    </ng-container>
+
+    <!-- Username Column -->
+    <ng-container matColumnDef="Username">
+      <th mat-header-cell *matHeaderCellDef>Username</th>
+      <td mat-cell *matCellDef="let user"> {{user.username}} </td>
+    </ng-container>
+
+    <!-- In group Column -->
+    <ng-container matColumnDef="addGroup">
+      <th mat-header-cell *matHeaderCellDef>In group</th>
+      <td mat-cell *matCellDef="let user" (click)="$event.stopPropagation()">
+        <div *ngIf="user != undefined && checkUserInGroup(user.id); else notIn">
+          <input type="checkbox" color="primary" (change)="manageGroupVolunteers($event, user.id)" checked>
+        </div>
+        <ng-template #notIn>
+          <input type="checkbox" color="primary" (change)="manageGroupVolunteers($event, user.id)">
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openId(row.id)"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div><br><br>
+
+  <button id="save" mat-raised-button color="primary">Save</button>
+</form>

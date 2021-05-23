@@ -6,6 +6,7 @@ import {NgRedux} from '@angular-redux/store';
 import {AppState} from '../../store/Store';
 
 import {User} from '../../entities/User';
+import {isElementScrolledOutsideView} from '@angular/cdk/overlay/position/scroll-clip';
 
 @Component({
   selector: 'app-new-volunteer',
@@ -25,14 +26,14 @@ export class NewVolunteerComponent implements OnInit {
               private volunteerAction: VolunteerActions, private ngRedux: NgRedux<AppState>) { }
 
   ngOnInit(): void {
+    this.editMode = false;
     const id: string = this.route.snapshot.paramMap.get('myId');
-    console.log(id);
     if (id !== null) {
       this.headerTitle = 'Edit Volunteer';
       this.editMode = true;
     }
 
-    this.ngRedux.select(state => state.users).subscribe((result: any) => {
+    this.ngRedux.select(state => state.users).subscribe(result => {
       this.selectedVolunteer = result.users.find(user => user.id === id);
     });
 
@@ -54,19 +55,20 @@ export class NewVolunteerComponent implements OnInit {
       this.volunteerForm.value.role = this.selectedRole;
       console.log(this.volunteerForm);
       if (this.volunteerForm.valid) {
+        this.selectedVolunteer = this.volunteerForm.value;
+        this.selectedVolunteer.signupDate = new Date();
+        this.selectedVolunteer.isVolunteer = false;
+        this.selectedVolunteer.role = this.selectedRole;
+        console.log(this.selectedVolunteer);
         if (!this.editMode) {
-          this.selectedVolunteer = this.volunteerForm.value;
-          this.selectedVolunteer.signupDate = new Date();
-          this.selectedVolunteer.isVolunteer = false;
-          this.selectedVolunteer.role = this.selectedRole;
-          console.log(this.selectedVolunteer);
           this.volunteerAction.saveVolunteer(this.selectedVolunteer);
         } else {
           console.log('We should update');
+          this.selectedVolunteer.id = this.route.snapshot.paramMap.get('myId');
+          this.volunteerAction.updateVolunteer(this.selectedVolunteer);
         }
         this.router.navigate(['volunteers']);
       }
     }
   }
-
 }

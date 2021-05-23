@@ -20,7 +20,7 @@ export class EventsComponent implements OnInit {
     private eventActions: EventActions, private tempDataService: DataService) { }
 
   ngOnInit(): void {
-    //this.events = this.tempDataService.getEvents();    
+    // this.events = this.tempDataService.getEvents();
     this.eventActions.readEvents();
 
     this.ngRedux.select(state => state.events).subscribe(res => {

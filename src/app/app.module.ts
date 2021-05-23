@@ -13,15 +13,14 @@ import { PostsComponent } from './posts/posts.component';
 import { EventsComponent } from './events/events.component';
 import { ChatsComponent } from './chats/chats.component';
 import { NeweditpostComponent } from './neweditpost/neweditpost.component';
-import { MatInputModule}  from '@angular/material/input';
+import { MatInputModule} from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
-import { MatTableModule } from '@angular/material/table'; 
+import { MatTableModule } from '@angular/material/table';
 import { PostComponent } from './post/post.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DevToolsExtension, NgRedux, NgReduxModule } from '@angular-redux/store';
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { AppState } from './store/Store';
-
 import { rootReducer } from './store/store';
 import { LoginComponent } from './login/login.component';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -35,6 +34,7 @@ import { NewVolunteerComponent } from './volunteers/new-volunteer/new-volunteer.
 import {MatOptionModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { NewGroupComponent } from './volunteers/new-group/new-group.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +50,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     PostsPipe,
     AddediteventComponent,
     VolunteersComponent,
-    NewVolunteerComponent
+    NewVolunteerComponent,
+    NewGroupComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +62,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     ReactiveFormsModule,
     HttpClientModule,
     MatButtonModule, MatToolbarModule, MatIconModule, MatListModule, AppRoutingModule,
-    MatInputModule, MatCardModule, MatGridListModule, MatTableModule, MatFormFieldModule,   
+    MatInputModule, MatCardModule, MatGridListModule, MatTableModule, MatFormFieldModule,
     MatOptionModule, MatSelectModule, MatPaginatorModule
   ],
   providers: [],
@@ -69,13 +70,13 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 })
 export class AppModule {
   constructor(private ngRedux: NgRedux<AppState>,
-    private devTool: DevToolsExtension,
-    private ngReduxRouter: NgReduxRouter,) {
+              private devTool: DevToolsExtension,
+              private ngReduxRouter: NgReduxRouter) {
 
     this.ngRedux.configureStore(rootReducer, {}, [],[ devTool.isEnabled() ? devTool.enhancer() : f => f]);
 //    this.ngRedux.configureStore(rootReducer, {});
 
-      ngReduxRouter.initialize(/* args */);
+    ngReduxRouter.initialize(/* args */);
   }
 
  }

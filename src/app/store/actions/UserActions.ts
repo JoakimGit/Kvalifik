@@ -4,7 +4,7 @@ import { AppState } from './../Store';
 import { AuthService} from '../../services/auth.service';
 import { User } from 'src/app/entities/User';
 import {Post} from '../../entities/Post';
-import {VolunteersService} from '../../volunteers.service';
+import {VolunteersService} from '../../services/volunteers.service';
 
 @Injectable({ providedIn: 'root'})
 export class UserActions {
@@ -13,8 +13,8 @@ export class UserActions {
                 private volunteerService: VolunteersService)
     {}
 
-  static SIGNED_UP: string = 'SIGNED_UP'; 
-  static LOGGED_IN: string = 'LOGGED_IN'; 
+  static SIGNED_UP: string = 'SIGNED_UP';
+  static LOGGED_IN: string = 'LOGGED_IN';
 
   login(username: string, password: string): void {
       this.authService.login(username, password).subscribe((result: any) => {
@@ -59,8 +59,8 @@ export class UserActions {
       });
     });
 
-    console.log("before getting a reponse");    
-    // Before you get a response from the server.    
+    console.log("before getting a reponse");
+    // Before you get a response from the server.
   }
 
 }

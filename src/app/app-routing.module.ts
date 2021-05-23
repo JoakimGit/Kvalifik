@@ -9,6 +9,7 @@ import { PostsComponent } from './posts/posts.component';
 import { RegisterComponent } from './register/register.component';
 import {VolunteersComponent} from './volunteers/volunteers.component';
 import {NewVolunteerComponent} from './volunteers/new-volunteer/new-volunteer.component';
+import {NewGroupComponent} from './volunteers/new-group/new-group.component';
 
 const routes: Routes = [
   { path: 'posts', component: PostsComponent },
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'edit-event/:id', component: AddediteventComponent},
   { path: 'test', component: EventsComponent},
   { path: 'volunteers', component: VolunteersComponent},
-  { path: 'volunteers/newvolunteer', component: NewVolunteerComponent}
+  { path: 'volunteers/newVolunteer', component: NewVolunteerComponent},
+  { path: 'volunteers/newGroup', component: NewGroupComponent}
 ];
 
 @NgModule({
