@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddediteventComponent } from './addeditevent/addeditevent.component';
 import { ChatsComponent } from './chats/chats.component';
 import { EventsComponent } from './events/events.component';
 import { LoginComponent } from './login/login.component';
@@ -14,6 +15,10 @@ const routes: Routes = [
   { path: 'neweditpost', component: NeweditpostComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: RegisterComponent },
+  { path: 'add-event', component: AddediteventComponent},
+  { path: 'edit-event/:id', component: AddediteventComponent},
+  { path: 'test', component: EventsComponent}
+
 ];
 
 @NgModule({

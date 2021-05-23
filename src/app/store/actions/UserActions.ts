@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { AppState } from './../Store';
-import { AuthService} from './../../auth.service';
+import { AuthService} from '../../services/auth.service';
 import { User } from 'src/app/entities/User';
 
 @Injectable({ providedIn: 'root'})
@@ -12,13 +12,6 @@ export class UserActions {
 
   static SIGNED_UP: string = 'SIGNED_UP'; 
   static LOGGED_IN: string = 'LOGGED_IN'; 
-  static SAVE_SOMETHING: string = 'SAVE_SOMETHING'; 
-
-  // saveSomething(something: string) {
-  //   this.authService.saveSomething(something).subscribe((res: any) => {
-  //     console.log(res);
-  //   });
-  // }
 
   login(username: string, password: string) : void {
       this.authService.login(username, password).subscribe((result: any) => {
@@ -63,12 +56,8 @@ export class UserActions {
       });
     });
 
-    console.log("before getting a reponse");
-    
-    // Before you get a response from the server.
-
-
-    
+    console.log("before getting a reponse");    
+    // Before you get a response from the server.    
   }
 
 }

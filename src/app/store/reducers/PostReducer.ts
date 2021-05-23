@@ -14,7 +14,7 @@ export const posts = [
         comments: comments} as Post
 ];
 
-const INITIAL_STATE: PostState = {isHappy: true, posts: posts};
+const INITIAL_STATE: PostState = {posts: posts};
 
 export function postsReducer(state: PostState = INITIAL_STATE, action: any) {
  switch (action.type) {
@@ -22,17 +22,14 @@ export function postsReducer(state: PostState = INITIAL_STATE, action: any) {
         return tassign(state, {posts: action.payload});
 
     case PostActions.UPDATE_POST:
-        // [{id:'1',...},{2},{3},{4},{5}]
-        // [{1},{2},{3new},{4},{5}]
-        //state.posts[2] = action.payload; // mutate the original array.
         const newArray = [...state.posts]; // copy of the array.
         const index = state.posts.findIndex(post => post.id === action.payload.id);
-        newArray[index] = action.payload;
+        newArray[index] = action.payload;        
+        
         return tassign(state, {posts: newArray});
 
         
     case PostActions.ADD_POST:
-        // add the action.payload (post) to the array of posts, but without mutating the array.
         return tassign(state, {posts: state.posts.concat(action.payload)});
         // return tassign(state, {posts: [...state.posts, action.payload]});
     
@@ -41,16 +38,7 @@ export function postsReducer(state: PostState = INITIAL_STATE, action: any) {
         arrayCopy = arrayCopy.filter(post => post.id !== action.payload);
         return tassign(state, {posts: arrayCopy});
 
-  case PostActions.SET_HAPPY:
-    // action.payload = true/false
-    // state.isHappy = action.payload; // mutating the old state object.
-    // return Object.assign({}, state, {isHappys: action.payload});
-
-    // state.isHappy = action.payload;
-    // return state;
-    return tassign(state, { isHappy: action.payload });
-
-   default:
-    return state;
-}
+    default:
+        return state;
+    }
 }

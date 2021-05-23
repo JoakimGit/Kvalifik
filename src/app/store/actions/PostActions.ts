@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { AppState } from './../Store';
 import { Post } from 'src/app/entities/Post';
-import { PostsService } from 'src/app/posts.service';
+import { PostsService } from 'src/app/services/posts.service';
 
 @Injectable({ providedIn: 'root'})
 export class PostActions {
@@ -10,12 +10,10 @@ export class PostActions {
     constructor (private ngRedux: NgRedux<AppState>, private postService: PostsService)
     {}
 
-  static SET_HAPPY: string = 'SET_HAPPY';
   static ADD_POST: string = 'ADD_POST';
   static UPDATE_POST: string = 'UPDATE_POST';
   static READ_POSTS: string = 'READ_POSTS'; 
   static DELETE_POST: string = 'DELETE_POST'; 
-
 
   readPosts() {
     this.postService.readPosts().subscribe((result: any) => {
@@ -37,16 +35,7 @@ export class PostActions {
     });
   }
 
-  setType(isHappy: boolean): void {
-
-    this.ngRedux.dispatch({
-        type: PostActions.SET_HAPPY,
-        payload: isHappy
-    });
-  }
-
   addPost(newPost: Post) : void {
-
     this.postService.savePost(newPost).subscribe((result: any) => {
       console.log("result from saving");
       console.log(result);
@@ -58,9 +47,8 @@ export class PostActions {
         payload: newPost
       });
     });
-
-
   }
+
   updatePost(updatedPost: Post) : void {
     this.ngRedux.dispatch({
         type: PostActions.UPDATE_POST,
@@ -74,5 +62,4 @@ export class PostActions {
       payload: id
     });
   }
-
 }

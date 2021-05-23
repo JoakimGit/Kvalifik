@@ -1,17 +1,41 @@
+$border-color: rgb(231, 231, 231);
+$background-color: white;
+
+/* 
 .example-spacer {
     flex: 1 1 auto;
+} */
+
+.nav-bar {
+    background-color: $background-color;
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid $border-color
 }
 
+
 .container {
-    display: flex;
+    /* display: flex; */
+    display: grid;
+    grid-template-columns: minmax(100px, 12%) 1fr;
 }
 
 .sidenav {
-    flex: 1;
-    border: 1px solid red;
+    height: 100vh;
+    padding: 0 5px;
+    border: 1px solid $border-color;
+    background-color: $background-color;
+}
+
+.nav-icon {
+    position: relative;
+    top: 6px
 }
 
 .content {
-    flex: 4;
-    border: 1px solid red;
+    // flex: 4;
+    padding: 2rem;
+    margin: 2rem;
+    border: 1px solid $border-color;
+    background-color: $background-color;
 }

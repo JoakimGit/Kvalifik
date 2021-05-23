@@ -2,7 +2,7 @@ import { NgRedux } from '@angular-redux/store';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DataService } from '../data.service';
+import { DataService } from '../services/data.service';
 import { Post } from '../entities/Post';
 import { PostActions } from '../store/actions/PostActions';
 import { AppState } from '../store/Store';
@@ -23,8 +23,8 @@ export class NeweditpostComponent implements OnInit {
     private ngRedux: NgRedux<AppState>) { }
 
   ngOnInit(): void {
-    const id: string = this.route.snapshot.paramMap.get('myId');
-    console.log(id);
+    const id: string = this.route.snapshot.paramMap.get('myId');    
+
     if (id !== null) {
       this.headerTitle = "Edit Post";
       this.editMode = true;
@@ -65,9 +65,9 @@ export class NeweditpostComponent implements OnInit {
         
         this.postActions.addPost(this.selectedPost);
       } else {
-        // console.log("call update");
+        console.log("call update");
         // console.log(this.selectedPost);
-        // console.log(this.postForm.value);
+        console.log(this.postForm.value);
         
         this.selectedPost.title = this.postForm.value.title;
         this.selectedPost.text = this.postForm.value.text;

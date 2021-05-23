@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Post } from './entities/Post';
+import { Post } from '../entities/Post';
+import { Event } from '../entities/Event';
+import {formatDate} from '@angular/common';
+import { MediaMatcher } from '@angular/cdk/layout';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +16,18 @@ export class DataService {
     {id: '5', createdDate: new Date(2021, 4, 2), title: 'What lies beyond the visible universe?', text: 'Something' } as Post,
   ];
 
+  private events: Event[] = [
+    {id: '1', title: 'Flashmob', startDate: new Date(2021, 5, 4), endDate: new Date(2021, 5, 4), startTime: '14:00', endTime: '17:00', description: 'Sudden flashmob dancing to Michael Jackson.', location: 'City square'} as Event,
+    {id: '2', title: 'Graffiti', startDate: new Date(2021, 5, 9), endDate: new Date(2021, 5, 9), startTime: '10:00', endTime: '15:00', description: 'Doing parkour around the city.', location: 'Copenhagen'} as Event,
+    {id: '3', title: 'Summer house trip', startDate: new Date(2021, 5, 18), endDate: new Date(2021, 5, 24), startTime: '12:00', endTime: '22:00', description: 'Trip with family to a summer house on Møn island.', location: 'Central station'} as Event
+  ]
+
   constructor() { }
+
+  public getEvents() {
+    // formatDate(new Date(2021, 5, 4), 'dd-MM-yyyy', 'da')
+    return this.events;
+  }
 
   public getPosts() {
     return this.posts;

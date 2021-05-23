@@ -1,12 +1,13 @@
 import { routerReducer } from '@angular-redux/router';
 import { combineReducers } from 'redux';
+import { Event } from '../entities/Event';
 import { Post } from '../entities/Post';
 import { User } from '../entities/User';
+import { eventsReducer } from './reducers/EventReducer';
 import { postsReducer } from './reducers/PostReducer';
 import { usersReducer } from './reducers/UserReducer';
 
 export class PostState {
-    isHappy: boolean;
     posts: Post[];
 }
 
@@ -14,19 +15,21 @@ export class UserState {
     loggedInUser: User;
     token: string;
 }
-// export class EventState {
-//     events: Event[];
-// }
+
+export class EventState {
+    events: Event[]
+}
 
 export class AppState {
     posts?: PostState;
     users?: UserState;
-    // events?: EventState;
+    events?: EventState;
 }
+
 export const rootReducer = combineReducers<AppState>({
     posts: postsReducer,
-    users: usersReducer
-    // events: eventsReducer,
+    users: usersReducer,
+    events: eventsReducer
 
     // router: routerReducer
 });

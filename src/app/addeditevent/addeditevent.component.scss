@@ -1,0 +1,18 @@
+.event-type,
+#save {
+    margin: 20px 30px;
+}
+
+.eventForm .mat-form-field {
+    margin: 0px 2em;
+}
+
+.full-width-input {
+    width: 50%;
+}
+
+::ng-deep {
+    .mat-form-field-appearance-outline .mat-form-field-outline {
+       color: rgb(143, 53, 247);
+    }
+}

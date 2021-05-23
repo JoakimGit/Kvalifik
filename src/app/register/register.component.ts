@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { UserActions } from '../store/actions/UserActions';
 
 @Component({
-  selector: 'app-register', // name of component
+  selector: 'app-register', 
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
@@ -25,23 +25,12 @@ export class RegisterComponent implements OnInit {
     )
   }
 
-  saveSomething() {
-    // this.userActions.saveSomething('interesting');
-  }
-
-
   onSubmit(): void {
     console.log(this.registerForm);
-
     if (this.registerForm.valid) {
-      this.userActions.signup(this.registerForm.value.username, this.registerForm.value.password);
-      
+      this.userActions.signup(this.registerForm.value.username, this.registerForm.value.password);      
       // Send the data to the server to verify the user login
       // navigate after successful login.
-
-
-
     }
-
   }
 }

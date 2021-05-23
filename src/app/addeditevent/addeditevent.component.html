@@ -1,0 +1,42 @@
+<h2 *ngIf="isAddMode" class="event-type">Create event</h2>
+<h2 *ngIf="!isAddMode" class="event-type">Edit event</h2>
+
+<form [formGroup]="eventForm" class="eventForm" (ngSubmit)="onSubmit()">
+
+  <mat-form-field appearance="outline" class="full-width-input">
+    <mat-label>Event title</mat-label>
+    <input matInput id="title" class="form-input" placeholder="Title" formControlName="title">
+  </mat-form-field><br>
+  
+  <mat-form-field appearance="outline">
+    <mat-label>Start date</mat-label>
+    <input matInput id="startDate" class="form-input" placeholder="Choose a start date" formControlName="startDate">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Start time</mat-label>
+    <input matInput id="startTime" class="form-input" placeholder="Choose a start time" formControlName="startTime">
+  </mat-form-field><br>
+
+  <mat-form-field appearance="outline">
+    <mat-label>End date</mat-label>
+    <input matInput id="endDate" class="form-input" placeholder="Choose an end date" formControlName="endTime">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>End time</mat-label>
+    <input matInput id="endTime" class="form-input" placeholder="Choose an end time" formControlName="endDate">
+  </mat-form-field><br>
+
+  <mat-form-field appearance="outline" class="full-width-input">
+    <mat-label>Location</mat-label>
+    <input matInput id="location" class="form-input" placeholder="Enter a location" formControlName="location">
+  </mat-form-field><br>
+
+  <mat-form-field appearance="outline" class="full-width-input">
+    <mat-label>Description</mat-label>
+    <textarea matInput id="description" class="form-input" placeholder="Write your post" formControlName="description" rows="8"></textarea>
+  </mat-form-field><br>  
+
+  <button id="save" mat-raised-button color="primary">Save event</button>
+</form>
