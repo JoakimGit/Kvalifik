@@ -10,6 +10,7 @@ export class User {
     coverPhoto?: string;
     signupDate: Date;
     title?: string;
+    isVolunteer?: boolean;
 }
 
 

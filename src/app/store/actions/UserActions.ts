@@ -3,31 +3,34 @@ import { NgRedux } from '@angular-redux/store';
 import { AppState } from './../Store';
 import { AuthService} from '../../services/auth.service';
 import { User } from 'src/app/entities/User';
+import {Post} from '../../entities/Post';
+import {VolunteersService} from '../../volunteers.service';
 
 @Injectable({ providedIn: 'root'})
 export class UserActions {
 
-    constructor (private ngRedux: NgRedux<AppState>, private authService: AuthService)
-    {} 
+    constructor(private ngRedux: NgRedux<AppState>, private authService: AuthService,
+                private volunteerService: VolunteersService)
+    {}
 
   static SIGNED_UP: string = 'SIGNED_UP'; 
   static LOGGED_IN: string = 'LOGGED_IN'; 
 
-  login(username: string, password: string) : void {
+  login(username: string, password: string): void {
       this.authService.login(username, password).subscribe((result: any) => {
-        console.log("response from server");
+        console.log('response from server');
         console.log(result);
-        
-        const user: User = { 
-          id: result.localId, 
-          username, email: username, 
+
+        const user: User = {
+          id: result.localId,
+          username, email: username,
           signupDate: undefined
         } as User;
 
         this.authService.getUserInfo(result.idToken).subscribe((response : any) => {
-          console.log("getUserInfo");
+          console.log('getUserInfo');
           console.log(response);
-          
+
           user.signupDate = new Date(Number(response.users[0].createdAt));
 
           this.ngRedux.dispatch({
@@ -41,13 +44,13 @@ export class UserActions {
   signup(username: string, password: string): void {
     this.authService.signup(username, password).subscribe((res: any) => {
         // After you get a reponse from the server
-        console.log("after getting a reponse");
+        console.log('after getting a reponse');
         console.log(res);
-      
-        const user: User = { 
-          id: res.localId, 
-          username, email: username, 
-          signupDate: new Date() 
+
+        const user: User = {
+          id: res.localId,
+          username, email: username,
+          signupDate: new Date()
         } as User;
 
         this.ngRedux.dispatch({

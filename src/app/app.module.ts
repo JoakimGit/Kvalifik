@@ -30,6 +30,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { PostsPipe } from './posts.pipe';
 import { AddediteventComponent } from './addeditevent/addeditevent.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { VolunteersComponent } from './volunteers/volunteers.component';
+import { NewVolunteerComponent } from './volunteers/new-volunteer/new-volunteer.component';
+import {MatOptionModule} from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -43,7 +48,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     LoginComponent,
     RegisterComponent,
     PostsPipe,
-    AddediteventComponent
+    AddediteventComponent,
+    VolunteersComponent,
+    NewVolunteerComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +61,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     ReactiveFormsModule,
     HttpClientModule,
     MatButtonModule, MatToolbarModule, MatIconModule, MatListModule, AppRoutingModule,
-    MatInputModule, MatCardModule, MatGridListModule, MatTableModule, MatFormFieldModule
+    MatInputModule, MatCardModule, MatGridListModule, MatTableModule, MatFormFieldModule,   
+    MatOptionModule, MatSelectModule, MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -63,11 +71,11 @@ export class AppModule {
   constructor(private ngRedux: NgRedux<AppState>,
     private devTool: DevToolsExtension,
     private ngReduxRouter: NgReduxRouter,) {
-   
+
     this.ngRedux.configureStore(rootReducer, {}, [],[ devTool.isEnabled() ? devTool.enhancer() : f => f]);
 //    this.ngRedux.configureStore(rootReducer, {});
- 
-      ngReduxRouter.initialize(/* args */);   
+
+      ngReduxRouter.initialize(/* args */);
   }
- 
+
  }
