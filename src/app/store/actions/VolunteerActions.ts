@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {NgRedux} from '@angular-redux/store';
 import {AppState} from '../Store';
-import {VolunteersService} from '../../volunteers.service';
+import {VolunteersService} from '../../services/volunteers.service';
 import {User} from '../../entities/User';
 
 @Injectable({ providedIn: 'root'})

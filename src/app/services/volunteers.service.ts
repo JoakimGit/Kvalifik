@@ -1,9 +1,9 @@
 import { NgRedux } from '@angular-redux/store';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ApiService } from './api.service';
-import { AppState } from './store/Store';
-import {User} from './entities/User';
+import { ApiService } from '../api.service';
+import { AppState } from '../store/Store';
+import {User} from '../entities/User';
 import {Observable} from 'rxjs';
 
 @Injectable({

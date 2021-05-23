@@ -4,7 +4,7 @@ import { AppState } from './../Store';
 import { AuthService} from '../../services/auth.service';
 import { User } from 'src/app/entities/User';
 import {Post} from '../../entities/Post';
-import {VolunteersService} from '../../volunteers.service';
+import {VolunteersService} from '../../services/volunteers.service';
 
 @Injectable({ providedIn: 'root'})
 export class UserActions {

@@ -16,11 +16,13 @@ export class EventsComponent implements OnInit {
   public search: string = '';
   public columnNames: string[] = ['title', 'startDate', 'startTime', 'location', 'btns'];
 
-  constructor(private router: Router, private ngRedux: NgRedux<AppState>,
-    private eventActions: EventActions, private tempDataService: DataService) { }
+  constructor(
+    private router: Router, 
+    private ngRedux: NgRedux<AppState>,
+    private eventActions: EventActions
+    ) { }
 
-  ngOnInit(): void {
-    //this.events = this.tempDataService.getEvents();    
+  ngOnInit(): void {   
     this.eventActions.readEvents();
 
     this.ngRedux.select(state => state.events).subscribe(res => {

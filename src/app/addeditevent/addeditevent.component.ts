@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Event } from '../entities/Event';
 import { EventActions } from '../store/actions/EventActions';
 import { AppState } from '../store/Store';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-addeditevent',
@@ -44,13 +45,16 @@ export class AddediteventComponent implements OnInit {
 
     this.eventForm = this.fb.group({
       title: [this.selectedEvent.title, Validators.required],
-      startDate: [this.selectedEvent.startDate, Validators.required],
+      startDate: [formatDate( this.selectedEvent.startDate, 'dd-MM-yyyy', 'en'), Validators.required],
       endDate: [this.selectedEvent.endDate, Validators.required],
       startTime: [this.selectedEvent.startTime, Validators.required],
       endTime: [this.selectedEvent.endTime, Validators.required],
       location: [this.selectedEvent.location, Validators.required],
       description: [this.selectedEvent.description, Validators.required]
     });
+
+    console.log(this.eventForm.get('startDate').value);
+    
   }
 
   onSubmit() {
