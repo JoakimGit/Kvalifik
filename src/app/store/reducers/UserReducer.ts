@@ -26,6 +26,12 @@ export function usersReducer(state: UserState = INITIAL_STATE, action: any): Use
        users: action.payload
      });
 
+   case VolunteerActions.UPDATE_VOLUNTEER:
+     const newArray = [...state.users];
+     const index = state.users.findIndex(user => user.id === action.payload.id);
+     newArray[index] = action.payload;
+     return tassign(state, {users: newArray});
+
     default:
         return state;
  }

@@ -23,7 +23,7 @@ export class NeweditpostComponent implements OnInit {
     private ngRedux: NgRedux<AppState>) { }
 
   ngOnInit(): void {
-    const id: string = this.route.snapshot.paramMap.get('myId');    
+    const id: string = this.route.snapshot.paramMap.get('myId');
 
     if (id !== null) {
       this.headerTitle = 'Edit Post';
@@ -34,8 +34,8 @@ export class NeweditpostComponent implements OnInit {
     // this.selectedPost = this.tempDataService.getPosts().find(post => post.id === id);
     this.ngRedux.select(state => state.posts).subscribe(res => {
       this.selectedPost = res.posts.find(post => post.id === id);
-      // console.log("found");
-      // console.log(this.selectedPost);
+      console.log("found");
+      console.log(this.selectedPost);
     });
     if (this.selectedPost === undefined) {
       this.selectedPost = new Post();
@@ -67,7 +67,7 @@ export class NeweditpostComponent implements OnInit {
         console.log("call update");
         // console.log(this.selectedPost);
         console.log(this.postForm.value);
-        
+
         this.selectedPost.title = this.postForm.value.title;
         this.selectedPost.text = this.postForm.value.text;
 

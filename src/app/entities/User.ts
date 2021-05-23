@@ -11,6 +11,7 @@ export class User {
     signupDate: Date;
     title?: string;
     isVolunteer?: boolean;
+    groups?: string[];
 }
 
 

@@ -12,8 +12,8 @@ export class PostActions {
 
   static ADD_POST: string = 'ADD_POST';
   static UPDATE_POST: string = 'UPDATE_POST';
-  static READ_POSTS: string = 'READ_POSTS'; 
-  static DELETE_POST: string = 'DELETE_POST'; 
+  static READ_POSTS: string = 'READ_POSTS';
+  static DELETE_POST: string = 'DELETE_POST';
 
   readPosts() {
     this.postService.readPosts().subscribe((result: any) => {
@@ -24,7 +24,7 @@ export class PostActions {
       for(let id in result) {
         let postObj = result[id];
         postObj.id = id;
-        
+
         posts.push(postObj as Post);
       }
 
@@ -49,7 +49,7 @@ export class PostActions {
     });
   }
 
-  updatePost(updatedPost: Post) : void {
+  updatePost(updatedPost: Post): void {
     this.ngRedux.dispatch({
         type: PostActions.UPDATE_POST,
         payload: updatedPost

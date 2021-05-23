@@ -30,4 +30,11 @@ export class VolunteersService extends ApiService {
 
     return this.http.get(url, this.getHttpOptions());
   }
+
+  updateVolunteer(volunteer: User): Observable<any> {
+    const token = this.ngRedux.getState().users.token;
+    const url = 'https://kvalifikdb-default-rtdb.europe-west1.firebasedatabase.app/volunteers/' + volunteer.id + '.json?auth=' + token;
+
+    return this.http.patch(url, volunteer, this.getHttpOptions());
+  }
 }
