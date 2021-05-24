@@ -46,14 +46,12 @@ export class AddediteventComponent implements OnInit {
     this.eventForm = this.fb.group({
       title: [this.selectedEvent.title, Validators.required],
       startDate: [formatDate( this.selectedEvent.startDate, 'dd-MM-yyyy', 'en'), Validators.required],
-      endDate: [this.selectedEvent.endDate, Validators.required],
+      endDate: [formatDate( this.selectedEvent.endDate, 'dd-MM-yyyy', 'en'), Validators.required],
       startTime: [this.selectedEvent.startTime, Validators.required],
       endTime: [this.selectedEvent.endTime, Validators.required],
       location: [this.selectedEvent.location, Validators.required],
       description: [this.selectedEvent.description, Validators.required]
     });
-
-    console.log(this.eventForm.get('startDate').value);
     
   }
 
