@@ -22,12 +22,7 @@ export class EventsComponent implements OnInit {
     private eventActions: EventActions
     ) { }
 
-<<<<<<< HEAD
   ngOnInit(): void {   
-=======
-  ngOnInit(): void {
-    // this.events = this.tempDataService.getEvents();
->>>>>>> fab0e0cd8aa9847a3f632a2f7f9a4cabbd9c245c
     this.eventActions.readEvents();
 
     this.ngRedux.select(state => state.events).subscribe(res => {

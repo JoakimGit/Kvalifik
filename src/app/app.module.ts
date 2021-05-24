@@ -31,16 +31,10 @@ import { AddediteventComponent } from './addeditevent/addeditevent.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { VolunteersComponent } from './volunteers/volunteers.component';
 import { NewVolunteerComponent } from './volunteers/new-volunteer/new-volunteer.component';
-<<<<<<< HEAD
-import { MatOptionModule } from '@angular/material/core';
-import { MatSelectModule } from '@angular/material/select';
-import { MatPaginatorModule } from '@angular/material/paginator';
-=======
 import {MatOptionModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { NewGroupComponent } from './volunteers/new-group/new-group.component';
->>>>>>> fab0e0cd8aa9847a3f632a2f7f9a4cabbd9c245c
 
 @NgModule({
   declarations: [
