@@ -1,13 +1,20 @@
+// Control width of each header column in table
 ::ng-deep {
         th.mat-header-cell{
         width: 250px;
     }
 }
 
+// Remove border lines below table rows 
+.mat-cell,
+.mat-header-cell {
+    border-bottom-style: none;
+}
+
+// Make rows as links
 .mat-row{        
     position: relative;
 }
-
 .mat-row-link{
     position: absolute;
     width: 100%;
@@ -16,11 +23,7 @@
     top: 0;             
 }
 
-.mat-cell,
-.mat-header-cell {
-    border-bottom-style: none;
-}
-
+// Reposition icons so they're aligned to the text
 mat-icon {
     position: relative;
     top: 2px;

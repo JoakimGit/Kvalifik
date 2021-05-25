@@ -29,30 +29,25 @@ export class AddediteventComponent implements OnInit {
     const id: string = this.route.snapshot.params['id'];
     this.isAddMode = !id;
 
-    console.log(id);
-    
-
     this.ngRedux.select(state => state.events).subscribe(res => {
       this.selectedEvent = res.events.find(event => event.id === id);
     });
     console.log("Selected event is:");
     console.log(this.selectedEvent);
-    
-    
+
     if (this.selectedEvent === undefined) {
-      this.selectedEvent = new Event();
-    }
+      this.selectedEvent = new Event();      
+    } 
 
     this.eventForm = this.fb.group({
-      title: [this.selectedEvent.title, Validators.required],
-      startDate: [formatDate( this.selectedEvent.startDate, 'dd-MM-yyyy', 'en'), Validators.required],
-      endDate: [formatDate( this.selectedEvent.endDate, 'dd-MM-yyyy', 'en'), Validators.required],
+      title: [this.selectedEvent.title, Validators.required], 
+      startDate: [this.selectedEvent.startDate, Validators.required],
+      endDate: [this.selectedEvent.endDate, Validators.required],
       startTime: [this.selectedEvent.startTime, Validators.required],
       endTime: [this.selectedEvent.endTime, Validators.required],
       location: [this.selectedEvent.location, Validators.required],
       description: [this.selectedEvent.description, Validators.required]
     });
-    
   }
 
   onSubmit() {

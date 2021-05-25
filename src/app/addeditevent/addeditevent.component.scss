@@ -1,14 +1,9 @@
-.event-type,
 #save {
     margin: 20px 30px;
 }
 
-.eventForm .mat-form-field {
-    margin: 0px 2em;
-}
-
-.full-width-input {
-    width: 50%;
+.mat-input-element:disabled {
+    color: black;
 }
 
 ::ng-deep {

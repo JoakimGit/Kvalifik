@@ -7,9 +7,10 @@ import { LoginComponent } from './login/login.component';
 import { NeweditpostComponent } from './neweditpost/neweditpost.component';
 import { PostsComponent } from './posts/posts.component';
 import { RegisterComponent } from './register/register.component';
-import {VolunteersComponent} from './volunteers/volunteers.component';
-import {NewVolunteerComponent} from './volunteers/new-volunteer/new-volunteer.component';
-import {NewGroupComponent} from './volunteers/new-group/new-group.component';
+import { VolunteersComponent } from './volunteers/volunteers.component';
+import { NewVolunteerComponent } from './volunteers/new-volunteer/new-volunteer.component';
+import { NewGroupComponent } from './volunteers/new-group/new-group.component';
+import { EventdetailsComponent } from './events/eventdetails/eventdetails.component';
 
 const routes: Routes = [
   { path: 'posts', component: PostsComponent },
@@ -18,12 +19,14 @@ const routes: Routes = [
   { path: 'neweditpost', component: NeweditpostComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: RegisterComponent },
-  { path: 'add-event', component: AddediteventComponent},
-  { path: 'edit-event/:id', component: AddediteventComponent},
-  { path: 'test', component: EventsComponent},
-  { path: 'volunteers', component: VolunteersComponent},
-  { path: 'volunteers/newVolunteer', component: NewVolunteerComponent},
-  { path: 'volunteers/newGroup', component: NewGroupComponent}
+  { path: 'add-event', component: AddediteventComponent },
+  { path: 'edit-event/:id', component: AddediteventComponent },
+  { path: 'events/:id', component: EventdetailsComponent },
+  { path: 'test', component: EventsComponent },
+  { path: 'volunteers', component: VolunteersComponent },
+  { path: 'volunteers/newVolunteer', component: NewVolunteerComponent },
+  { path: 'volunteers/newGroup', component: NewGroupComponent },
+  { path: 'collections', redirectTo: 'posts'}
 ];
 
 @NgModule({

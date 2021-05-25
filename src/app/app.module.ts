@@ -31,10 +31,13 @@ import { AddediteventComponent } from './addeditevent/addeditevent.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { VolunteersComponent } from './volunteers/volunteers.component';
 import { NewVolunteerComponent } from './volunteers/new-volunteer/new-volunteer.component';
-import {MatOptionModule} from '@angular/material/core';
-import {MatSelectModule} from '@angular/material/select';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { NewGroupComponent } from './volunteers/new-group/new-group.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { EventdetailsComponent } from './events/eventdetails/eventdetails.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +54,8 @@ import { NewGroupComponent } from './volunteers/new-group/new-group.component';
     AddediteventComponent,
     VolunteersComponent,
     NewVolunteerComponent,
-    NewGroupComponent
+    NewGroupComponent,
+    EventdetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +67,7 @@ import { NewGroupComponent } from './volunteers/new-group/new-group.component';
     HttpClientModule,
     MatButtonModule, MatToolbarModule, MatIconModule, MatListModule, AppRoutingModule,
     MatInputModule, MatCardModule, MatGridListModule, MatTableModule, MatFormFieldModule,
-    MatOptionModule, MatSelectModule, MatPaginatorModule
+    MatOptionModule, MatSelectModule, MatPaginatorModule, MatDatepickerModule, MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
