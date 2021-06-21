@@ -5,22 +5,22 @@
     }
 }
 
-// Remove border lines below table rows 
+// Remove border lines below table rows
 .mat-cell,
 .mat-header-cell {
     border-bottom-style: none;
 }
 
 // Make rows as links
-.mat-row{        
+.mat-row{
     position: relative;
 }
 .mat-row-link{
-    position: absolute;
+    position: relative;
     width: 100%;
     height: 75%;
     left: 0;
-    top: 0;             
+    top: 0;
 }
 
 // Reposition icons so they're aligned to the text

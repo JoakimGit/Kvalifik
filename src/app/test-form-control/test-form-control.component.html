@@ -1,0 +1,35 @@
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+  <label for="first-name">First Name: </label>
+  <input id="first-name" name="first-name" type="text" formControlName="firstName">
+
+  <label for="last-name">Last Name: </label>
+  <input id="last-name" type="text" formControlName="lastName">
+
+  <div *ngIf="firstName.invalid && (firstName.touched || firstName.dirty)" style="color: red">
+    <div *ngIf="firstName.errors?.required">
+      First name is required.
+    </div>
+    <div *ngIf="firstName.errors?.minlength">
+      First name must be 3 characters
+    </div>
+    <div *ngIf="firstName.errors?.pattern">
+      First name can only contain small letters
+    </div>
+  </div>
+
+
+  <div *ngIf="lastName.invalid && (lastName.touched || lastName.dirty)" style="color: red">
+    <div *ngIf="lastName.errors?.required">
+      Last name is required.
+    </div>
+    <div *ngIf="lastName.errors?.pattern">
+      Last name can only contain small letters
+    </div>
+  </div>
+
+  <p>Form Status: {{ profileForm.status }}</p>
+  <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+</form>
+<button routerLink="/login">Login</button>
+<button routerLink="whatever">404</button>

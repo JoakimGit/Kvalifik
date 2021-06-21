@@ -32,7 +32,7 @@ export function usersReducer(state: UserState = INITIAL_STATE, action: any): Use
      newArray[index] = action.payload;
      return tassign(state, {users: newArray});
 
-    default:
-        return state;
+   default:
+     return state;
  }
 }
