@@ -11,6 +11,7 @@ import { VolunteersComponent } from './volunteers/volunteers.component';
 import { NewVolunteerComponent } from './volunteers/new-volunteer/new-volunteer.component';
 import { NewGroupComponent } from './volunteers/new-group/new-group.component';
 import { EventdetailsComponent } from './events/eventdetails/eventdetails.component';
+import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: 'posts', component: PostsComponent },
@@ -26,7 +27,8 @@ const routes: Routes = [
   { path: 'volunteers', component: VolunteersComponent },
   { path: 'volunteers/newVolunteer', component: NewVolunteerComponent },
   { path: 'volunteers/newGroup', component: NewGroupComponent },
-  { path: 'collections', redirectTo: 'posts'}
+  { path: 'collections', redirectTo: 'posts'},
+  { path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({

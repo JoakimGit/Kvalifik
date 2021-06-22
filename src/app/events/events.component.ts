@@ -17,12 +17,12 @@ export class EventsComponent implements OnInit {
   public columnNames: string[] = ['title', 'startDate', 'startTime', 'location', 'btns'];
 
   constructor(
-    private router: Router, 
+    private router: Router,
     private ngRedux: NgRedux<AppState>,
     private eventActions: EventActions
     ) { }
 
-  ngOnInit(): void {   
+  ngOnInit(): void {
     this.eventActions.readEvents();
 
     this.ngRedux.select(state => state.events).subscribe(res => {

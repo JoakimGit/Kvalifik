@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {VolunteerActions} from '../../store/actions/VolunteerActions';
 import {NgRedux} from '@angular-redux/store';
 import {AppState} from '../../store/Store';
 
 import {User} from '../../entities/User';
-import {isElementScrolledOutsideView} from '@angular/cdk/overlay/position/scroll-clip';
+
 
 @Component({
   selector: 'app-new-volunteer',
@@ -15,7 +15,7 @@ import {isElementScrolledOutsideView} from '@angular/cdk/overlay/position/scroll
 })
 export class NewVolunteerComponent implements OnInit {
   public selectedVolunteer: User;
-  public selectedRole: string;
+  public selectedRole = 'student';
   public volunteerForm: FormGroup;
   public headerTitle = 'Create New Volunteer';
   public editMode = false;
@@ -71,4 +71,9 @@ export class NewVolunteerComponent implements OnInit {
       }
     }
   }
+
+  get firstName(): AbstractControl { return this.volunteerForm.get('firstName'); }
+  get lastName(): AbstractControl { return this.volunteerForm.get('lastName'); }
+  get username(): AbstractControl { return this.volunteerForm.get('username'); }
+  get email(): AbstractControl { return this.volunteerForm.get('email'); }
 }

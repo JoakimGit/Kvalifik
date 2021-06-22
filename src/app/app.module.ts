@@ -38,6 +38,8 @@ import { NewGroupComponent } from './volunteers/new-group/new-group.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { EventdetailsComponent } from './events/eventdetails/eventdetails.component';
+import { TestFormControlComponent } from './test-form-control/test-form-control.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,9 @@ import { EventdetailsComponent } from './events/eventdetails/eventdetails.compon
     VolunteersComponent,
     NewVolunteerComponent,
     NewGroupComponent,
-    EventdetailsComponent
+    EventdetailsComponent,
+    TestFormControlComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
