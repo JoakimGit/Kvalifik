@@ -30,8 +30,6 @@ export class NeweditpostComponent implements OnInit {
       this.editMode = true;
     }
 
-
-    // this.selectedPost = this.tempDataService.getPosts().find(post => post.id === id);
     this.ngRedux.select(state => state.posts).subscribe(res => {
       this.selectedPost = res.posts.find(post => post.id === id);
       console.log("found");
@@ -40,8 +38,6 @@ export class NeweditpostComponent implements OnInit {
     if (this.selectedPost === undefined) {
       this.selectedPost = new Post();
     }
-    // console.log(this.selectedPost);
-
 
     this.postForm = this.fb.group({
       title: [this.selectedPost.title, Validators.required],
@@ -53,32 +49,21 @@ export class NeweditpostComponent implements OnInit {
     console.log(this.postForm);
 
     if (this.postForm.valid){
-      // Can you store this post object in the temp. data service
-      // and then navigate to the posts component?
+
       if (!this.editMode) {
         this.selectedPost = this.postForm.value;
         this.selectedPost.createdDate = new Date();
-        // this.selectedPost.id = ""+Math.random(); // temporary until we connect to a backend.
-
-        // console.log(this.selectedPost);
 
         this.postActions.addPost(this.selectedPost);
       } else {
         console.log("call update");
-        // console.log(this.selectedPost);
-        console.log(this.postForm.value);
 
         this.selectedPost.title = this.postForm.value.title;
         this.selectedPost.text = this.postForm.value.text;
 
         this.postActions.updatePost(this.selectedPost);
       }
-      // this.tempDataService.addPost(this.selectedPost);
       this.router.navigate(['posts']);
     }
-
   }
-
-
-
 }

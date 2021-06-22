@@ -51,7 +51,7 @@ export class AddediteventComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.eventForm.invalid) { return; }
+    if (this.eventForm.invalid) { return }
 
     if (this.isAddMode) {
       this.selectedEvent = this.eventForm.value;

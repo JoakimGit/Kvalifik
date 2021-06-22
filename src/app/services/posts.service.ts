@@ -17,14 +17,24 @@ export class PostsService extends ApiService {
   savePost(post: Post) {
     const token = this.ngRedux.getState().users.token;
     const url = 'https://kvalifikdb-default-rtdb.europe-west1.firebasedatabase.app/posts.json?auth=' + token;
-
     return this.http.post(url, post, this.getHttpOptions());
   }
 
+  updatePost(post: Post) {
+    const token = this.ngRedux.getState().users.token;
+    const url = "https://kvalifikdb-default-rtdb.europe-west1.firebasedatabase.app/posts/" + post.id + ".json?auth=" + token;
+    return this.http.put(url, post, this.getHttpOptions());
+  }
 
   readPosts() {
     const token = this.ngRedux.getState().users.token;
     const url = "https://kvalifikdb-default-rtdb.europe-west1.firebasedatabase.app/posts.json?auth=" + token;
     return this.http.get(url, this.getHttpOptions());
+  }
+  
+  deletePost(id: string) {
+    const token = this.ngRedux.getState().users.token;
+    const url = "https://kvalifikdb-default-rtdb.europe-west1.firebasedatabase.app/posts/" + id + ".json?auth=" + token;
+    return this.http.delete(url, this.getHttpOptions());  
   }
 }
