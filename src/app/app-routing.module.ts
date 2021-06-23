@@ -11,9 +11,10 @@ import { VolunteersComponent } from './volunteers/volunteers.component';
 import { NewVolunteerComponent } from './volunteers/new-volunteer/new-volunteer.component';
 import { NewGroupComponent } from './volunteers/new-group/new-group.component';
 import { EventdetailsComponent } from './events/eventdetails/eventdetails.component';
-import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
+  { path: '', component: PostsComponent },
   { path: 'posts', component: PostsComponent },
   { path: 'events', component: EventsComponent },
   { path: 'chats', component: ChatsComponent },

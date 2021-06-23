@@ -12,7 +12,6 @@
           <th mat-header-cell *matHeaderCellDef>Event</th>
           <td mat-cell *matCellDef="let event"> {{ event.title }}
             
-          <!-- <a fxFlexFill [routerLink]="'/events/'+event.id" class="mat-row-link"></a> -->
           <a fxFlexFill [routerLink]="['/events', event.id]" class="mat-row-link"></a>
           </td>
         </ng-container>
