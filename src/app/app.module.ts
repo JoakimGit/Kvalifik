@@ -59,7 +59,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     NewGroupComponent,
     EventdetailsComponent,
     TestFormControlComponent,
-    PageNotFoundComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

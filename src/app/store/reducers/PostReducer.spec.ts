@@ -31,7 +31,6 @@ describe('posts reducer', () => {
         deepFreeze(oldState);
 
         const result = postsReducer(oldState, action);
-        const id = updatedPost.id -1
 
         const index = result.posts.findIndex(post => post.id === updatedPost.id);
 

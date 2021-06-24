@@ -46,7 +46,7 @@ export class AddediteventComponent implements OnInit {
       startTime: [this.selectedEvent.startTime, Validators.required],
       endTime: [this.selectedEvent.endTime, Validators.required],
       location: [this.selectedEvent.location, Validators.required],
-      description: [this.selectedEvent.description, Validators.required]
+      description: [this.selectedEvent.description, [Validators.required, Validators.minLength(20)]]
     });
   }
 
@@ -63,4 +63,11 @@ export class AddediteventComponent implements OnInit {
     this.router.navigate(['events']);
   }
 
+  get title() { return this.eventForm.get("title"); }
+  get startDate() { return this.eventForm.get("startDate"); }
+  get endDate() { return this.eventForm.get("endDate"); }
+  get startTime() { return this.eventForm.get("startTime"); }
+  get endTime() { return this.eventForm.get("endTime"); }
+  get location() { return this.eventForm.get("location"); }
+  get description() { return this.eventForm.get("description"); }
 }

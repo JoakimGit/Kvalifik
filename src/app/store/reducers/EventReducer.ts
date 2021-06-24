@@ -34,5 +34,6 @@ export function eventsReducer(state: EventState = INITIAL_STATE, action: any) {
             return tassign(state, {events: arrayCopy});
 
         default:
-    }      return state;
+          return state;
+    }
 }

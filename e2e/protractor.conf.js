@@ -13,8 +13,8 @@ exports.config = {
     './src/**/*.e2e-spec.ts'
   ],
   multiCapabilities: [
-    {'browserName': 'chrome'},
-    // {'browserName': 'firefox'},
+    // {'browserName': 'chrome'},
+    {'browserName': 'firefox'},
   ],
   directConnect: true,
   SELENIUM_PROMISE_MANAGER: false,

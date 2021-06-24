@@ -3,8 +3,12 @@
     <button mat-raised-button color="primary" routerLink="/add-event" id="newEventBtn">New Event</button>
 </div>
 
+<mat-form-field>
+  <input matInput type="text" (keyup)="searchEvents($event.target.value)" placeholder="Search events" />
+</mat-form-field>
+
 <div>
-    <table mat-table [dataSource]="events">        
+    <table mat-table [dataSource]="dataSource">        
         <tr mat-header-row *matHeaderRowDef="columnNames"></tr>
         <tr mat-row *matRowDef="let myRowData; columns: columnNames"></tr>
 
@@ -38,7 +42,7 @@
                 <button mat-stroked-button color="primary" 
                 (click)="editEvent(event.id)" class="e2e-edit">Edit</button>
                 <button mat-stroked-button color="warn" 
-                (click)="deleteEvent(event.id)" class="e2e-edit">Delete</button>
+                (click)="deleteEvent(event.id)" class="e2e-delete">Delete</button>
             </td>
         </ng-container>
     </table>      

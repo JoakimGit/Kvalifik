@@ -6,6 +6,12 @@
     color: black;
 }
 
+.form-error {
+    margin: 0 2em;
+    padding: 0 0 1em;
+    color: red;
+}
+
 ::ng-deep {
     .mat-form-field-appearance-outline .mat-form-field-outline {
        color: rgb(143, 53, 247);

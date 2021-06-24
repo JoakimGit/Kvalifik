@@ -6,41 +6,72 @@
   <mat-form-field appearance="outline" class="form-input-big">
     <mat-label>Event title</mat-label>
     <input matInput id="title" placeholder="Title" formControlName="title">
-  </mat-form-field><br>
+  </mat-form-field><br>  
+  <div *ngIf="title.errors?.required && title.touched" class="form-error">
+    Title is required.
+  </div>
   
   <mat-form-field appearance="outline" class="form-input-med">
     <mat-label>Start date</mat-label>
-    <input matInput [matDatepicker]="pickerStart" formControlName="startDate" placeholder="Choose start date" disabled>
+    <input matInput id="startDate" [matDatepicker]="pickerStart" formControlName="startDate" placeholder="Choose start date" disabled>
     <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
     <mat-datepicker #pickerStart disabled="false"></mat-datepicker>
   </mat-form-field>
+  <div *ngIf="startDate.errors?.required && startDate.touched" class="form-error">
+    Start date is required.
+  </div>
 
   <mat-form-field appearance="outline" class="form-input-small">
     <mat-label>Start time</mat-label>
     <input matInput id="startTime" placeholder="Choose a start time" formControlName="startTime">
   </mat-form-field><br>
 
+  <div *ngIf="startTime.errors?.required && startTime.touched" class="form-error">
+    Start time is required.
+  </div>
+
   <mat-form-field appearance="outline" class="form-input-med">
     <mat-label>End date</mat-label>
-    <input matInput [matDatepicker]="pickerEnd" formControlName="endDate" placeholder="Choose end date" disabled>
+    <input matInput id="endDate" [matDatepicker]="pickerEnd" formControlName="endDate" placeholder="Choose end date" disabled>
     <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
     <mat-datepicker #pickerEnd disabled="false"></mat-datepicker>
   </mat-form-field>
+
+  <div *ngIf="endDate.errors?.required && endDate.touched" class="form-error">
+    End date is required.
+  </div>
 
   <mat-form-field appearance="outline" class="form-input-small">
     <mat-label>End time</mat-label>
     <input matInput id="endTime"placeholder="Choose an end time" formControlName="endTime">
   </mat-form-field><br>
 
+  <div *ngIf="endTime.errors?.required && endTime.touched" class="form-error">
+    End time is required.
+  </div>
+
   <mat-form-field appearance="outline" class="form-input-big">
     <mat-label>Location</mat-label>
     <input matInput id="location" placeholder="Enter a location" formControlName="location">
   </mat-form-field><br>
 
+  <div *ngIf="location.errors?.required && location.touched" class="form-error">
+    Location is required.
+  </div>
+
   <mat-form-field appearance="outline" class="form-input-big">
     <mat-label>Description</mat-label>
     <textarea matInput id="description" placeholder="Write your post" formControlName="description" rows="8"></textarea>
   </mat-form-field><br>  
+
+  <div *ngIf="description.invalid && description.touched" class="form-error">
+    <div *ngIf="description.errors?.required">
+      Description is required.
+    </div>
+    <div *ngIf="description.errors?.minlength">
+      Description must be at least 20 characters long.
+    </div>
+  </div>
 
   <button id="save" mat-raised-button color="primary">Save event</button>
 </form>

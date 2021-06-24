@@ -1,4 +1,4 @@
-import {browser, by, element} from 'protractor';
+/* import {browser, by, element} from 'protractor';
 import { usersReducer} from '../../src/app/store/reducers/UserReducer';
 
 describe('Volunteer component test', () => {
@@ -91,3 +91,4 @@ describe('Volunteer component test', () => {
     });
   });
 });
+ */
