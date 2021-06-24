@@ -27,7 +27,7 @@ export class UserActions {
           signupDate: undefined
         } as User;
 
-        this.authService.getUserInfo(result.idToken).subscribe((response : any) => {
+        this.authService.getUserInfo(result.idToken).subscribe((response: any) => {
           console.log('getUserInfo');
           console.log(response);
 
@@ -37,7 +37,7 @@ export class UserActions {
             type: UserActions.LOGGED_IN,
             payload: {user, token: result.idToken}
           });
-        })
+        });
       });
   }
 

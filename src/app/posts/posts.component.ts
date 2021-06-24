@@ -1,7 +1,6 @@
 import { NgRedux } from '@angular-redux/store';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DataService } from '../services/data.service';
 import { Post } from '../entities/Post';
 import { PostActions } from '../store/actions/PostActions';
 import { AppState } from '../store/Store';
@@ -14,7 +13,7 @@ import { AppState } from '../store/Store';
 export class PostsComponent implements OnInit {
   public posts: Post[];
   public search: string = '';
-  
+
   constructor (
     private router: Router, 
     private ngRedux: NgRedux<AppState>, 

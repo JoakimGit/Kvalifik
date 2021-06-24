@@ -50,13 +50,27 @@ export class PostActions {
   }
 
   updatePost(updatedPost: Post): void {
-    this.ngRedux.dispatch({
+    this.postService.updatePost(updatedPost).subscribe(result => {
+      console.log("Updating post");
+      console.log(result);      
+      
+      this.ngRedux.dispatch({
         type: PostActions.UPDATE_POST,
         payload: updatedPost
+      });
     });
   }
 
   deletePost(id: string) : void {
+    this.postService.deletePost(id).subscribe({
+      next: () => {
+        console.log('Delete successful');
+      },
+      error: error => {
+        console.error('There was an error!', error);
+      }      
+    });
+
     this.ngRedux.dispatch({
       type: PostActions.DELETE_POST,
       payload: id

@@ -29,36 +29,29 @@ export class AddediteventComponent implements OnInit {
     const id: string = this.route.snapshot.params['id'];
     this.isAddMode = !id;
 
-    console.log(id);
-    
-
     this.ngRedux.select(state => state.events).subscribe(res => {
       this.selectedEvent = res.events.find(event => event.id === id);
     });
     console.log("Selected event is:");
     console.log(this.selectedEvent);
-    
-    
+
     if (this.selectedEvent === undefined) {
-      this.selectedEvent = new Event();
-    }
+      this.selectedEvent = new Event();      
+    } 
 
     this.eventForm = this.fb.group({
-      title: [this.selectedEvent.title, Validators.required],
-      startDate: [formatDate( this.selectedEvent.startDate, 'dd-MM-yyyy', 'en'), Validators.required],
+      title: [this.selectedEvent.title, Validators.required], 
+      startDate: [this.selectedEvent.startDate, Validators.required],
       endDate: [this.selectedEvent.endDate, Validators.required],
       startTime: [this.selectedEvent.startTime, Validators.required],
       endTime: [this.selectedEvent.endTime, Validators.required],
       location: [this.selectedEvent.location, Validators.required],
-      description: [this.selectedEvent.description, Validators.required]
+      description: [this.selectedEvent.description, [Validators.required, Validators.minLength(20)]]
     });
-
-    console.log(this.eventForm.get('startDate').value);
-    
   }
 
   onSubmit() {
-    if (this.eventForm.invalid) { return; }
+    if (this.eventForm.invalid) { return }
 
     if (this.isAddMode) {
       this.selectedEvent = this.eventForm.value;
@@ -70,4 +63,11 @@ export class AddediteventComponent implements OnInit {
     this.router.navigate(['events']);
   }
 
+  get title() { return this.eventForm.get("title"); }
+  get startDate() { return this.eventForm.get("startDate"); }
+  get endDate() { return this.eventForm.get("endDate"); }
+  get startTime() { return this.eventForm.get("startTime"); }
+  get endTime() { return this.eventForm.get("endTime"); }
+  get location() { return this.eventForm.get("location"); }
+  get description() { return this.eventForm.get("description"); }
 }

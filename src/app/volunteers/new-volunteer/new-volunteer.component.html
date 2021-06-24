@@ -6,14 +6,32 @@
     <textarea matInput id="firstName" placeholder="First name" formControlName="firstName"></textarea>
   </mat-form-field><br>
 
+  <div *ngIf="firstName.invalid && (firstName.touched || firstName.dirty)" style="color: red">
+    <div *ngIf="firstName.errors?.required">
+      First name is required
+    </div>
+    <div *ngIf="firstName.errors?.pattern">
+      First name can only contain letters from A-Z
+    </div>
+  </div>
+
   <mat-form-field class="example-full-width">
     <mat-label>Last name</mat-label>
     <textarea matInput id="lastName" placeholder="Last name" formControlName="lastName"></textarea>
   </mat-form-field><br>
 
+  <div *ngIf="lastName.invalid && (lastName.touched || lastName.dirty)" style="color: red">
+    <div *ngIf="lastName.errors?.required">
+      Last name is required
+    </div>
+    <div *ngIf="lastName.errors?.pattern">
+      Last name can only contain letters from A-Z
+    </div>
+  </div>
+
   <mat-form-field appearance="fill">
     <mat-label>Role</mat-label>
-    <mat-select [(ngModel)]="selectedRole" [ngModelOptions]="{standalone: true}" name="selRole">
+    <mat-select id="selRole" [(ngModel)]="selectedRole" [ngModelOptions]="{standalone: true}" name="selRole">
       <mat-option *ngFor="let role of roles" [value]="role">
         {{role}}
       </mat-option>
@@ -25,10 +43,25 @@
     <textarea matInput id="username" placeholder="Username" formControlName="username"></textarea>
   </mat-form-field><br>
 
+  <div *ngIf="username.invalid && (username.touched || username.dirty)" style="color: red">
+    <div *ngIf="username.errors?.required">
+      Username is required
+    </div>
+  </div>
+
   <mat-form-field class="example-full-width">
     <mat-label>Email</mat-label>
     <textarea matInput id="email" placeholder="Email" formControlName="email"></textarea>
   </mat-form-field><br>
 
-  <button id="save" mat-raised-button color="primary">Save</button>
+  <div *ngIf="email.invalid && (email.touched || email.dirty)" style="color: red">
+    <div *ngIf="email.errors?.required">
+      email is required
+    </div>
+    <div *ngIf="email.errors?.email">
+      Please enter a valid email (name@domain)
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="!volunteerForm.valid" id="save" mat-raised-button color="primary">Save</button>
 </form>

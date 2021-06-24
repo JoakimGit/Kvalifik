@@ -13,5 +13,24 @@ body {
 .flexHeader {
     display: flex;
     justify-content: space-between;
-    // margin: 20px;
+}
+
+.form-input-small {
+    width: 10%;
+}
+
+.form-input-med {
+    width: 15%;
+}
+
+.form-input-big {
+    width: 40%;
+}
+
+.eventForm .mat-form-field {
+    margin: 0px 2em;
+}
+
+.page-header {
+    margin: 20px 30px;
 }

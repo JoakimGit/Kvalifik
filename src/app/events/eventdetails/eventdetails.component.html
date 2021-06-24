@@ -1,0 +1,42 @@
+<h2 class="page-header">Event details</h2>
+
+<form class="eventForm">
+
+    <mat-form-field appearance="outline" class="form-input-big">
+        <mat-label>Event title</mat-label>
+        <input matInput id="title" value="{{selectedEvent.title}}" readonly>
+    </mat-form-field><br>
+    
+    <mat-form-field appearance="outline" class="form-input-med">
+        <mat-label>Start date</mat-label>
+        <input matInput  value="{{selectedEvent.startDate | date: 'dd-MM-yyyy'}}" readonly>        
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" class="form-input-small">
+        <mat-label>Start time</mat-label>
+        <input matInput id="startTime" value="{{selectedEvent.startTime}}" readonly>
+    </mat-form-field><br>
+    
+    <mat-form-field appearance="outline" class="form-input-med">
+        <mat-label>End date</mat-label>
+        <input matInput value="{{selectedEvent.endDate | date: 'dd-MM-yyyy'}}" readonly>
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" class="form-input-small">
+        <mat-label>End time</mat-label>
+        <input matInput id="endTime" value="{{selectedEvent.endTime}}" readonly>
+    </mat-form-field><br>
+    
+    <mat-form-field appearance="outline" class="form-input-big">
+        <mat-label>Location</mat-label>
+        <input matInput id="location" value="{{selectedEvent.location}}" readonly>
+    </mat-form-field><br>
+    
+    <mat-form-field appearance="outline" class="form-input-big">
+        <mat-label>Description</mat-label>
+        <textarea matInput id="description" value="{{selectedEvent.description}}" rows="8" readonly></textarea>
+    </mat-form-field><br>  
+    
+    <button id="return" mat-stroked-button color="primary" [routerLink]="['/events']">Back</button>
+</form>
+

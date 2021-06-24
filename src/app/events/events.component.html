@@ -3,8 +3,12 @@
     <button mat-raised-button color="primary" routerLink="/add-event" id="newEventBtn">New Event</button>
 </div>
 
+<mat-form-field>
+  <input matInput type="text" (keyup)="searchEvents($event.target.value)" placeholder="Search events" />
+</mat-form-field>
+
 <div>
-    <table mat-table [dataSource]="events">        
+    <table mat-table [dataSource]="dataSource">        
         <tr mat-header-row *matHeaderRowDef="columnNames"></tr>
         <tr mat-row *matRowDef="let myRowData; columns: columnNames"></tr>
 
@@ -12,13 +16,13 @@
           <th mat-header-cell *matHeaderCellDef>Event</th>
           <td mat-cell *matCellDef="let event"> {{ event.title }}
             
-          <a fxFlexFill [routerLink]="'/maintenance/data/'+event.id" class="mat-row-link"></a>
+          <a fxFlexFill [routerLink]="['/events', event.id]" class="mat-row-link"></a>
           </td>
         </ng-container>
 
         <ng-container matColumnDef="startDate">
             <th mat-header-cell *matHeaderCellDef> Date </th>
-            <td mat-cell *matCellDef="let event"> {{event.startDate | date: 'dd/MM/yyyy'}}</td>
+            <td mat-cell *matCellDef="let event"> {{event.startDate | date: 'dd-MM-yyyy'}}</td>
         </ng-container>        
 
         <ng-container matColumnDef="startTime">
@@ -38,33 +42,8 @@
                 <button mat-stroked-button color="primary" 
                 (click)="editEvent(event.id)" class="e2e-edit">Edit</button>
                 <button mat-stroked-button color="warn" 
-                (click)="deleteEvent(event.id)" class="e2e-edit">Delete</button>
+                (click)="deleteEvent(event.id)" class="e2e-delete">Delete</button>
             </td>
         </ng-container>
     </table>      
 </div>
-
-<!-- <div class="flexGrid"> 
-    <mat-form-field>
-        <input matInput type="text" [(ngModel)]="search" placeholder="Search events" />
-    </mat-form-field>
-    <mat-card class="example-card" *ngFor="let event of events | filterPosts: search"> 
-       <app-post [event]="event" (eventClicked)="editEvent($event)" (deleteClicked)="deleteEvent($event)"></app-post>
-       <mat-card-header>
-        <mat-card-title>{{post.title}}</mat-card-title>
-        <mat-card-subtitle>{{post.createdDate | date: 'dd/MM/yyyy'}}</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-      <mat-card-content>
-        <p>
-          {{post.text}}
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-          <button mat-stroked-button color="primary" 
-            (click)="editPost(post.id)" class="e2e-edit">Edit</button>  
-          <button mat-stroked-button color="warn" 
-            (click)="deletePost(post.id)" class="e2e-delete">Delete</button> 
-      </mat-card-actions>
-    </mat-card>
-</div> -->

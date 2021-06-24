@@ -6,7 +6,6 @@ import {AppState} from '../store/Store';
 import {User} from '../entities/User';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
-import {UserActions} from '../store/actions/UserActions';
 import {GroupAction} from '../store/actions/GroupAction';
 import {VolunteerGroup} from '../entities/VolunteerGroup';
 import {VolunteerDataService} from '../services/volunteer-data.service';
@@ -20,14 +19,13 @@ export class VolunteersComponent implements OnInit, AfterContentInit, AfterViewI
   constructor(private router: Router, private volunteerAction: VolunteerActions,
               private groupAction: GroupAction, private volunteerData: VolunteerDataService,
               private ngRedux: NgRedux<AppState>) { }
-  // testUser: User = {id: 'test', firstName: 'TestFirst', lastName: 'TestLast', role: 'admin',
-  //   username: 'testUser', email: 'testMail', signupDate: new Date(), isVolunteer: true};
+
   public userList: User[] = [];
   public volunteerList: User[] = [];
   public groupList: VolunteerGroup[];
 
   displayedColumns: string[] = ['Name', 'Role', 'Username', 'Email', 'signUp', 'accDec'];
-  displayedColumns2: string[] = ['Name', 'Role',/* 'Group',*/ 'Username', 'Email', 'signUp', 'rem'];
+  displayedColumns2: string[] = ['Name', 'Role', 'Username', 'Email', 'signUp', 'rem'];
   displayedColumns3: string[] = ['groupName', 'memberCount', 'rem'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -37,6 +35,7 @@ export class VolunteersComponent implements OnInit, AfterContentInit, AfterViewI
   dataSource = new MatTableDataSource<User>(this.userList);
   dataSource2 = new MatTableDataSource<User>();
   dataSource3 = new MatTableDataSource<VolunteerGroup>();
+  dataSize;
 
   ngOnInit(): void {
     // Nedenstående loader ikke ordentligt med paginator så det er rykket til afterContentInit

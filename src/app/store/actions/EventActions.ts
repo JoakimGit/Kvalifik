@@ -24,9 +24,9 @@ export class EventActions {
       for (let id in result) {
         let eventObj = result[id]
         eventObj.id = id;
-        eventObj.startDate = new Date(eventObj.startDate);
-        
+        eventObj.startDate = new Date(eventObj.startDate);        
         eventObj.endDate = new Date(eventObj.endDate);
+        
         events.push(eventObj as Event);
       }      
 
@@ -78,6 +78,4 @@ export class EventActions {
       payload: id
     });
   }
-
-
 }

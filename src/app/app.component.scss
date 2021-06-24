@@ -1,11 +1,6 @@
 $border-color: rgb(231, 231, 231);
 $background-color: white;
 
-/* 
-.example-spacer {
-    flex: 1 1 auto;
-} */
-
 .nav-bar {
     background-color: $background-color;
     display: flex;
@@ -13,9 +8,7 @@ $background-color: white;
     border: 1px solid $border-color
 }
 
-
 .container {
-    /* display: flex; */
     display: grid;
     grid-template-columns: minmax(100px, 12%) 1fr;
 }
@@ -33,7 +26,6 @@ $background-color: white;
 }
 
 .content {
-    // flex: 4;
     padding: 2rem;
     margin: 2rem;
     border: 1px solid $border-color;

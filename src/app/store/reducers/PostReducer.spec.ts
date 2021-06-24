@@ -6,22 +6,11 @@ import { Post } from 'src/app/entities/Post';
 
 describe('posts reducer', () => {
     it('should return the initial state', () => {
-        expect(postsReducer(undefined, {})).toEqual({isHappy: true, posts: posts});
-    });
-    
-    it('Toggle isHappy', () => {
-        const oldState = {isHappy: true, posts: posts};
-        const action = { type: types.PostActions.SET_HAPPY, payload: false };
-        
-        deepFreeze(oldState);
-        
-        const result = postsReducer(oldState, action);
-
-        expect(result).toEqual({isHappy: false, posts: posts});
+        expect(postsReducer(undefined, {})).toEqual({posts: posts});
     });
 
     it('Add post', () => {
-        const oldState = {isHappy: true, posts: posts};
+        const oldState = {posts: posts};
         const newPost = {id: '6', createdDate: new Date(2021, 4, 9), title: 'Space', text: 'Something about space' } as Post;
         const action = {type: types.PostActions.ADD_POST, payload: newPost};
 
@@ -35,14 +24,13 @@ describe('posts reducer', () => {
     });
 
     it('Update post', () => {
-        const oldState = {isHappy: true, posts: posts};
+        const oldState = {posts: posts};
         const updatedPost = {id: '3', createdDate: new Date(2021, 2, 2), title: 'What other good questions are there?', text: 'Perhaps something about dinosaurs'} as Post;
         const action = {type: types.PostActions.UPDATE_POST, payload: updatedPost};
 
         deepFreeze(oldState);
 
         const result = postsReducer(oldState, action);
-        const id = updatedPost.id -1
 
         const index = result.posts.findIndex(post => post.id === updatedPost.id);
 
@@ -50,7 +38,7 @@ describe('posts reducer', () => {
     });
 
     it('Delete post', () => {
-        const oldState = {isHappy: true, posts: posts};
+        const oldState = {posts: posts};
         const idToRemove = "2";
         const action = {type: types.PostActions.DELETE_POST, payload: idToRemove};
 
